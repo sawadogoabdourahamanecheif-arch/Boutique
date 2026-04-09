@@ -34,7 +34,108 @@ function envoyerCommande(event, produit) {
     });
 }
 </script>
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+}
 
+/* HEADER */
+h1 {
+    background: linear-gradient(90deg, #008751, #fcd116, #ef3340);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* TITRES */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* MENU */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #222;
+    margin: 2px;
+    padding: 12px;
+    color: white;
+}
+
+ul li ul li {
+    background: #444;
+}
+
+ul li:hover {
+    background: #008751;
+    cursor: pointer;
+}
+
+/* PRODUITS */
+img, video {
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+h3 {
+    color: #008751;
+}
+
+/* BLOCS PRODUITS */
+div {
+    background: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+div:hover {
+    transform: scale(1.02);
+}
+
+/* FORMULAIRES */
+input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* BOUTONS */
+button {
+    background: #008751;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 95%;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #005f3a;
+    transform: scale(1.05);
+}
+
+/* SEPARATEUR */
+hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 30px 0;
+}
 </head>
 
 <body>
