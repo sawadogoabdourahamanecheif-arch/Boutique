@@ -2,67 +2,119 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Mon Shop PRO</title>
-<link rel="stylesheet" href="style.css">
+<title>Mon Shop</title>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+function envoyerCommande(event, produit) {
+    event.preventDefault();
+
+    var nom = event.target.nom.value;
+    var numero = event.target.numero.value;
+    var quartier = event.target.quartier.value;
+
+    var params = {
+        nom: nom,
+        numero: numero,
+        quartier: quartier,
+        produit: produit
+    };
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+    .then(function() {
+        alert("Commande envoyée !");
+    }, function(error) {
+        alert("Erreur: " + JSON.stringify(error));
+    });
+}
+</script>
+
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-    <h2>Connexion</h2>
-    <input id="nom" placeholder="Nom complet">
-    <input id="numero" placeholder="Numéro">
-    <input id="quartier" placeholder="Quartier">
-    <button onclick="login()">Entrer</button>
-</div>
+<!-- CONNEXION -->
+<h2>Connexion</h2>
+<form>
+    <input type="text" placeholder="Nom complet" required><br><br>
+    <input type="text" placeholder="Numéro" required><br><br>
+    <input type="text" placeholder="Quartier" required><br><br>
+    <button type="submit">Entrer</button>
+</form>
 
-<!-- APP -->
-<div id="app" style="display:none;">
+<hr>
 
-<header>
-    <h1>🛒 Mon Shop PRO</h1>
-</header>
-
-<nav>
+<!-- MENU -->
+<h2>Menu</h2>
 <ul>
-    <li>Accueil</li>
+    <li><a href="#">Accueil</a></li>
 
-    <li class="menu">Nos Produits
-        <div class="submenu">
-            <p onclick="filter('cosmetique')">Cosmétique</p>
-            <p onclick="filter('soin')">Soins</p>
-            <p onclick="filter('beaute')">Beauté</p>
-        </div>
+    <li>Nos Produits
+        <ul>
+            <li>Cosmétiques</li>
+            <li>Soins</li>
+            <li>Beauté</li>
+        </ul>
     </li>
 
-    <li class="menu">À propos
-        <div class="submenu">
-            <p>Nous</p>
-            <p>Contacts</p>
-            <p>Localisation</p>
-        </div>
+    <li>À propos
+        <ul>
+            <li>Nous</li>
+            <li>Contacts</li>
+            <li>Localisation</li>
+        </ul>
     </li>
 </ul>
-</nav>
 
-<!-- PRODUITS -->
-<div id="products"></div>
+<hr>
 
-</div>
+<!-- PRODUIT 1 -->
+<h3>Produit Cosmétique</h3>
+<img src="images/produit1.jpg" width="200"><br>
+<p>Bon pour la peau</p>
 
-<!-- MODAL -->
-<div id="modal" class="hidden">
-    <h2 id="title"></h2>
-    <p id="desc"></p>
-    <button onclick="order()">Commander</button>
-    <button onclick="closeModal()">Fermer</button>
-</div>
+<form onsubmit="envoyerCommande(event, 'Produit Cosmétique')">
+    <input type="text" name="nom" placeholder="Nom" required><br><br>
+    <input type="text" name="numero" placeholder="Numéro" required><br><br>
+    <input type="text" name="quartier" placeholder="Quartier" required><br><br>
+    <button type="submit">Commander</button>
+</form>
 
-<script src="app.js"></script>
+<hr>
+
+<!-- PRODUIT 2 -->
+<h3>Produit Vidéo</h3>
+<video width="200" controls>
+    <source src="videos/produit.mp4" type="video/mp4">
+</video><br>
+<p>Présentation produit</p>
+
+<form onsubmit="envoyerCommande(event, 'Produit Vidéo')">
+    <input type="text" name="nom" placeholder="Nom" required><br><br>
+    <input type="text" name="numero" placeholder="Numéro" required><br><br>
+    <input type="text" name="quartier" placeholder="Quartier" required><br><br>
+    <button type="submit">Commander</button>
+</form>
+
+<hr>
+
+<!-- A PROPOS -->
+<h2>À propos</h2>
+
+<h3>Nous</h3>
+<p>Présentation de votre entreprise</p>
+
+<h3>Contacts</h3>
+<p>Téléphone : 00000000</p>
+
+<h3>Localisation</h3>
+<p>Ouagadougou</p>
+
 </body>
 </html>
