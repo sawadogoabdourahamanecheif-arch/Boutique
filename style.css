@@ -1,62 +1,102 @@
+/* RESET */
 body {
-    margin:0;
-    font-family: Arial;
-    background: #111;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+/* HEADER */
+h1 {
+    background: linear-gradient(90deg, #008751, #fcd116, #ef3340);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* TITRES */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* MENU */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #222;
+    margin: 2px;
+    padding: 12px;
     color: white;
 }
 
-header {
-    text-align:center;
-    padding:20px;
+ul li ul li {
+    background: #444;
 }
 
-nav ul {
-    display:flex;
-    gap:20px;
-    list-style:none;
-    background:black;
-    padding:10px;
+ul li:hover {
+    background: #008751;
+    cursor: pointer;
 }
 
-.menu {
-    position:relative;
+/* PRODUITS */
+img, video {
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
-.submenu {
-    display:none;
-    position:absolute;
-    background:#333;
-    padding:10px;
+h3 {
+    color: #008751;
 }
 
-.menu:hover .submenu {
-    display:block;
+/* BLOCS PRODUITS */
+div {
+    background: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-#products {
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    padding:20px;
+div:hover {
+    transform: scale(1.02);
 }
 
-.product {
-    background:white;
-    color:black;
-    padding:10px;
-    width:200px;
-    cursor:pointer;
+/* FORMULAIRES */
+input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
-.hidden {
-    display:none;
+/* BOUTONS */
+button {
+    background: #008751;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 95%;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: 0.3s;
 }
 
-#modal {
-    position:fixed;
-    top:20%;
-    left:30%;
-    background:white;
-    color:black;
-    padding:20px;
+button:hover {
+    background: #005f3a;
+    transform: scale(1.05);
+}
+
+/* SEPARATEUR */
+hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 30px 0;
 }
