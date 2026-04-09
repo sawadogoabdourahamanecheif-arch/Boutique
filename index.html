@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mon Shop</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://upload.wikimedia.org/wikipedia/commons/3/31/Flag_of_Burkina_Faso.svg");
+    background-size: cover;
+    color: white;
+}
+
+/* LOGIN */
+#loginPage {
+    text-align: center;
+    margin-top: 100px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+}
+
+/* NAVBAR */
+nav {
+    background: black;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background: gray;
+    padding: 10px;
+}
+
+li:hover .dropdown {
+    display: block;
+}
+
+/* PRODUITS */
+#products {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: white;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.product img, .product video {
+    width: 200px;
+}
+
+/* MODAL */
+#modal {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    background: white;
+    color: black;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE LOGIN -->
+<div id="loginPage">
+    <h1>Connexion</h1>
+    <input type="text" id="nom" placeholder="Nom complet"><br>
+    <input type="text" id="numero" placeholder="Numéro"><br>
+    <input type="text" id="quartier" placeholder="Quartier"><br>
+    <button onclick="login()">Entrer</button>
+</div>
+
+<!-- SITE -->
+<div id="site" style="display:none;">
+
+<header>
+    <h1 style="text-align:center;">🛒 Mon Shop</h1>
+</header>
+
+<nav>
+<ul>
+    <li>Accueil</li>
+
+    <li>Nos Produits
+        <div class="dropdown">
+            <p>Cosmétique</p>
+            <p>Soins</p>
+            <p>Beauté</p>
+        </div>
+    </li>
+
+    <li>À propos
+        <div class="dropdown">
+            <p>Nous</p>
+            <p>Contacts</p>
+            <p>Localisation</p>
+        </div>
+    </li>
+</ul>
+</nav>
+
+<!-- PRODUITS -->
+<div id="products">
+
+<div class="product" onclick="showProduct('Crème beauté', 'Très bon produit pour la peau')">
+    <img src="https://via.placeholder.com/200">
+    <p>Crème beauté</p>
+</div>
+
+<div class="product" onclick="showProduct('Huile naturelle', 'Produit 100% naturel')">
+    <video src="" controls></video>
+    <p>Huile naturelle</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal">
+    <h2 id="title"></h2>
+    <p id="desc"></p>
+
+    <button onclick="order()">Commander</button>
+    <button onclick="closeModal()">Fermer</button>
+</div>
+
+<script>
+
+let user = {};
+
+function login() {
+    user.nom = document.getElementById("nom").value;
+    user.numero = document.getElementById("numero").value;
+    user.quartier = document.getElementById("quartier").value;
+
+    if(user.nom && user.numero && user.quartier){
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("site").style.display = "block";
+    } else {
+        alert("Remplis tous les champs !");
+    }
+}
+
+function showProduct(title, desc){
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("title").innerText = title;
+    document.getElementById("desc").innerText = desc;
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+function order(){
+    let message = `Commande:\nNom: ${user.nom}\nNuméro: ${user.numero}\nQuartier: ${user.quartier}`;
+    
+    alert(message);
+
+    // simulation en attendant backend
+    window.location.href = `mailto:tonemail@gmail.com?subject=Commande&body=${message}`;
+}
+
+</script>
+
+</body>
+</html>
